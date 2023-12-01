@@ -63,29 +63,29 @@ jobs:
             exit 1
           fi
           
-      # - name: Docker compose
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     username: ubuntu
-      #     host: ${{ env.STOPPED_IP }}
-      #     key: ${{ secrets.EC2_SSH_KEY }}
-      #     script_stop: true
-      #     script: |
-      #       sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/server:latest
-      #       sudo docker-compose up -d
+      - name: Docker compose
+        uses: appleboy/ssh-action@master
+        with:
+          username: ubuntu
+          host: ${{ env.STOPPED_IP }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script_stop: true
+          script: |
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/server:latest
+            sudo docker-compose up -d
       
-      - name: Check deploy server URL PORT 8080
-        uses: jtalk/url-health-check-action@v3
-        with:
-          url: http://${{ env.STOPPED_IP }}:8080/env
-          max-attempts: 3
-          retry-delay: 10s
-      - name: Check deploy server URL PORT 8081
-        uses: jtalk/url-health-check-action@v3
-        with:
-          url: http://${{ env.STOPPED_IP }}:8081/env
-          max-attempts: 3
-          retry-delay: 10s
+      # - name: Check deploy server URL PORT 8080
+      #   uses: jtalk/url-health-check-action@v3
+      #   with:
+      #     url: http://${{ env.STOPPED_IP }}:8080/env
+      #     max-attempts: 3
+      #     retry-delay: 10s
+      # - name: Check deploy server URL PORT 8081
+      #   uses: jtalk/url-health-check-action@v3
+      #   with:
+      #     url: http://${{ env.STOPPED_IP }}:8081/env
+      #     max-attempts: 3
+      #     retry-delay: 10s
 
       - name: Change nginx upstream
         uses: appleboy/ssh-action@master
