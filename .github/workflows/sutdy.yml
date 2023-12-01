@@ -1,0 +1,27 @@
+name: CI
+
+# event
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# 실행 부분의 묶음
+jobs:
+  #
+  build:
+    # docker랑 비슷, 가상환경에서 운영체제를 선택가능
+    runs-on: ubuntu-latest
+
+    # 순서
+    steps:
+     # - uses: actions/checkout@v3
+
+      - name: print hello
+        run: echo Hello
+        
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
