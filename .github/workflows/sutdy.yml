@@ -16,12 +16,6 @@ jobs:
 
     # 순서
     steps:
-     # - uses: actions/checkout@v3
-
-      - name: print hello
-        run: echo Hello
-        
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - uses: actions/checkout@v3
+      - name: show files
+      - run: ls
