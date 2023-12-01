@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v3
       # name은 마음대로, 나머지는 정해진 형식대로
       - name: Install JDK 11
-        uses: actions/setup-java@3
+        uses: actions/setup-java@v3
         with:
           java-version: '11'
           distributes: 'temurin'
